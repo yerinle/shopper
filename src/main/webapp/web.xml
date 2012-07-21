@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+
+    <!-- for auto-discovering of resources -->
+    <!--<context-param>-->
+        <!--<param-name>resteasy.scan</param-name>-->
+        <!--<param-value>true</param-value>-->
+    <!--</context-param>-->
+
+    <!-- this need same with resteasy servlet url-pattern -->
+    <context-param>
+        <param-name>resteasy.servlet.mapping.prefix</param-name>
+        <param-value>/rest</param-value>
+    </context-param>
+
+    <!--<listener>-->
+        <!--<listener-class>-->
+            <!--org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap-->
+        <!--</listener-class>-->
+    <!--</listener>-->
+
+    <servlet>
+        <servlet-name>Rest</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>
+                com.hebace.service.ShoppingApplication
+            </param-value>
+        </init-param>
+        <!--<load-on-startup>1</load-on-startup>-->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Rest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+</web-app>
